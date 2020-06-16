@@ -34,6 +34,7 @@
 
 
 <body>
+  <div class="container">
     <h2> Deep Learning in Action </h2>
     <div class="row">
         <div class="col-sm-1"></div>
@@ -42,55 +43,83 @@
             <center>
                 <h3>Image Caption Generator with Encoder Decoder Network</h3>
             </center>
+        </div>
+      <div class="row">  </div>
+        <div class="container">
+          <div class="row mt-3">
+          <div class="col-sm-6">
+            <div class="card" style="">
+              <div class="card-header" style="text-align :center;">Upload an Image to generate a caption</div>
+              <h5 class="card-title"></h5>
+                {% if img %}
+                    <img src="data:image/jpg;base64,{{img|safe}}" class="card-img-top px-2" alt="...", height="300", width="300">
+                {% endif %}
+                  <div class="card-body">
+                    <p class="card-text">
+                      <div class="form-row" style="height: 50px;">
+                        <div style="display: flex; align-items: center;">
+                            <form  "needs-validation" novalidate action = "/upload" method = "post" enctype="multipart/form-data" id="predict" >
 
-            <center>
-                <h4>Upload an Image to generate a caption</h4>
-            </center>
-
-            <div class="form-row" style="height: 350px;">
-                <div style="display: flex;align-items: center;">
-                    <form action = "/upload" method = "post" enctype="multipart/form-data" id="predict">  
-                        <input type="file" name="file" />  
-                        <button type = "submit">Upload</button>
-                    </form>
+                              <div class="custom-file " style="width: 20rem" >
+                                <input type="file" name="file"  class="custom-file-input" id="inputGroupFile02" >
+                                <label class="custom-file-label" for="inputGroupFile02">Choose file...</label>
+                                </div>
+                                <button type = "submit"class=" btn btn-light" style="width: 10rem ; height: 40px;">Upload</button>
+                            </form>
+                        </div>
+                      </div>
+                   </p>
+                   <div>
+                       <button type="button" class="btn btn-light btn-lg btn-block" id="btn-process">Predict</button>
+                   </div>
                 </div>
-                <div>
-                    {% if img %}
-                        <img src="data:image/jpg;base64,{{img|safe}}", height="300", width="300">
-                    {% endif %}
-                </div>
-                <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-process">Predict</button>
-            </div>
+              </div>
+          </div>
 
-            <h4> Predictions </h4>
-            <div class="form-row">
-                <div class="form-group col-md-2">
-                    <label for="text_paragraphs">Features</label>
+        <div class="col-sm-6">
+          <div class="card " style="height: 530px">
+            <div class="card-header" style="text-align :center;">Predictions</div>
+            <div class="form-row px-3 pt-5">
+                <div class="form-group col-md-4">
+                    <label for="text_paragraphs" >Features</label>
                     <textarea class="form-control txt_response" id="feat" readonly></textarea>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-4">
                     <label for="text_paragraphs">PRED 1</label>
                     <textarea class="form-control txt_response" id="text_1" readonly></textarea>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-4">
                     <label for="text_paragraphs">PRED 2</label>
                     <textarea class="form-control txt_response" id="text_2" readonly></textarea>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-4">
                     <label for="text_paragraphs">PRED 3</label>
                     <textarea class="form-control txt_response" id="text_3" readonly></textarea>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-4">
                     <label for="text_paragraphs">PRED 4</label>
                     <textarea class="form-control txt_response" id="text_4" readonly></textarea>
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-4">
                     <label for="text_paragraphs">PRED 5</label>
                     <textarea class="form-control txt_response" id="text_4" readonly></textarea>
                 </div>
             </div>
-        </div>
+         </div>
+       </div>
+     </div>
     </div>
+  </div>
+
+  <script>
+            $('#inputGroupFile02').on('change',function(){
+                //get the file name
+                var fileName = $(this).val();
+                //replace the "Choose a file" label
+                $(this).next('.custom-file-label').html(fileName);
+            })
+        </script>
+</div>
 </body>
 
 </html>
