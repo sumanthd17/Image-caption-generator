@@ -22,7 +22,7 @@
 - [Rupesh Somana](https://www.linkedin.com/in/rupesh-somana-9ab826173/) For the Web Interface
 
 ## Web Interface
-![Web Interface](https://github.com/sumanthd17/Image-caption-generator/blob/master/ui.jpg?raw=true)
+![Web Interface](https://github.com/sumanthd17/Image-caption-generator/blob/master/ui.png?raw=true)
 
 ## Contributing ##
 ### Code Style ###
